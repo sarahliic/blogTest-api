@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW</title>
+    <style>
+      body {
+        background-color: palevioletred;
+      }
+      textarea {
+        width: 50%;
+      }
+    </style>
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+    <!-- ckeditor -->
+
+    <div class="d-flex w-100 justify-content-center">
+      <textarea name="textarea" cols="5" rows="10" class="w-50"></textarea>
+    </div>
+    <div id="blog"></div>
+    <button class="text-center" id="btn">submit</button>
+    <button class="text-center" id="btn-del">delete</button>
+
+    <script>
+      // CKEDITOR
+      CKEDITOR.replace("textarea");
+      let blog = document.getElementById("blog");
+      let btn = document.getElementById("btn");
+      let btnDel = document.getElementById("btn-del");
+
+      btn.addEventListener("click", () => {
+        // let text = document.createElement("p")
+        let texterea = CKEDITOR.instances.textarea.getData();
+        console.log("texterea");
+        blog.innerHTML = texterea;
+      });
+
+      btnDel.addEventListener("click", () => {
+        console.log("hello");
+        let texterea = CKEDITOR.instances.textarea.setData("");
+        blog.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>
